@@ -11,6 +11,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.KinectStick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SimpleRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Watchdog;
 
 /**
@@ -24,11 +25,14 @@ public class MichaelKinect extends SimpleRobot {
     KinectStick left;
     KinectStick right;
     RobotDrive dt;
-    
+    Victor leftv;
+    Victor rightv;
     public MichaelKinect() {
         left = new KinectStick(1);
         right = new KinectStick(2);
-        dt = new RobotDrive(1, 2);
+        leftv = new Victor(1);
+        rightv = new Victor(2);
+        dt = new RobotDrive(leftv, rightv);
     }
     /**
      * This function is called once each time the robot enters autonomous mode.
@@ -43,7 +47,7 @@ public class MichaelKinect extends SimpleRobot {
     public void operatorControl() {
         Watchdog.getInstance().setEnabled(false);
         while (isOperatorControl() && isEnabled()) {
-            dt.tankDrive(left.getY(), right.getY());
+            dt.tankDrive(-left.getY(), -right.getY());
         }
 
     }
