@@ -22,8 +22,8 @@ import edu.wpi.first.wpilibj.Victor;
  */
 public class Michael1 extends IterativeRobot {
     
-    KinectStick leftK;
-    KinectStick rightK;
+    KinectStickCust leftK;
+    KinectStickCust rightK;
     RobotDrive drive;
     Victor leftV, rightV;
     /**
@@ -32,8 +32,8 @@ public class Michael1 extends IterativeRobot {
      */
     public void robotInit() {
         
-        leftK = new KinectStick(1);
-        rightK = new KinectStick(2);
+        leftK = new KinectStickCust(1);
+        rightK = new KinectStickCust(2);
         
         
         leftV = new Victor(1);
