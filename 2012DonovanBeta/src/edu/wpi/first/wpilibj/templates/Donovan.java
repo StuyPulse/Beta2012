@@ -7,7 +7,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.DriverStationEnhancedIO.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -16,43 +15,33 @@ import edu.wpi.first.wpilibj.DriverStationEnhancedIO.*;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Donovan extends SimpleRobot implements Ports {
+public class Donovan extends SimpleRobot{
 
-//    boolean lastTop;
     Joystick lstick;
     Joystick rstick;
     Joystick shootStick;
-    RobotDrive dt;
-//    Acquirer roller;
-//    Kicker kicker;
-//    Hanger hanger;
-    Gyro gyro;
-//    DonTrackerDashboard trackerDashboard;
-//    DonCircleTracker tracker;
-//    DonovanOI oi;
-//    Autonomous auton;
+    Joystick gamepad;
 
-
+    Victor acquirer;
     public Donovan() {
-        lstick = new Joystick(LSTICK_PORT); //usb port
-        rstick = new Joystick(RSTICK_PORT); //usb port
-        shootStick = new Joystick(SHOOTSTICK_PORT); //usb port
-        gyro = new Gyro(GYRO_CHANNEL);
-        gyro.setSensitivity(-0.007); //this is also done in DonCircleTracker
-        dt = new RobotDrive(DRIVE_1_CHANNEL, DRIVE_2_CHANNEL, DRIVE_3_CHANNEL, DRIVE_4_CHANNEL); //digital channelss
+        lstick = new Joystick(1); //usb port
+        rstick = new Joystick(2); //usb port
+        shootStick = new Joystick(3); //usb portRIVE_3_CHANNEL, DRIVE_4_CHANNEL); //digital channelss
 
+        gamepad = new Joystick(4);
+        acquirer = new Victor(9);
+        System.out.println("contsructed Donovan");
     }
-    
     public void operatorControl() {
         getWatchdog().setEnabled(false);
-
-//        lastTop = false;
         while (isOperatorControl() && isEnabled()) {
             Timer.delay(.01);
-            dt.tankDrive(lstick, rstick);          
+            
+            System.out.println("hello?  In operator control.");
+            
         }
     }
-    
+
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
