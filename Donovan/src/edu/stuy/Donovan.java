@@ -51,9 +51,6 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
         auton = new Autonomous(this);
 
 
-        oi = new DonovanOI(this);
-        trackerDashboard = new DonTrackerDashboard(this);
-        tracker = new DonCircleTracker(this);
 
 //        dt.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 //        dt.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
@@ -85,7 +82,6 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
             //auton.runSettingNum(2);
             // getWatchdog().feed();
             //System.out.println(oi.getAutonSwitch());
-            auton.runSettingNum(oi.getAutonSwitch());
 
         }
     }
@@ -105,11 +101,13 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
 
 
 
+
+            dt.arcadeDrive(lstick);
             //tracker.doCamera();
 
 
             /************ Driver Controls **************/
-            dt.tankDrive(lstick, rstick);
+            //dt.tankDrive(lstick, rstick);
 
             /*
             if(c%100 == 0){
@@ -126,41 +124,6 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
                 dt.setHigh(); //to high gear
             }
 
-
-            if (!lstick.getRawButton(3) && !rstick.getRawButton(3)) {
-                if (lastTop) {
-                    tracker.stopAligning();
-                    oi.resetLEDs();
-                }
-                lastTop = false;
-                dt.tankDrive(lstick, rstick);
-            } else {
-                tracker.doCamera();
-                if (!lastTop) {
-                    tracker.startAligning();
-                }
-                lastTop = true;
-            }
-
-
-            /*
-            if (rstick.getRawButton(9)) {
-                System.out.println(kicker.getCockStatus());
-            }
-             * */
-
-
-            /*
-            if (lstick.getRawButton(6) || rstick.getRawButton(6) || shootStick.getRawButton(6)) {
-            oi.testLEDs();
-            } else {
-            oi.resetLEDs();
-            }
-
-            if (lstick.getRawButton(11) || rstick.getRawButton(11) || shootStick.getRawButton(11)) {
-            dt.resetEncoders();
-            }
-             */
 
 
 
@@ -203,7 +166,7 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
 
             /************ Panel Controls **************/
             //System.out.println("Binary switch: " + oi.getAutonSwitch());
-            if (oi.getA_Frame()) {
+           /* if (oi.getA_Frame()) {
                 //System.out.println("Get a frame!");
                 hanger.deployAFrame();
             }
@@ -226,15 +189,9 @@ public class Donovan extends SimpleRobot implements Ports, ThreeLaws {
             if (oi.getCock()) {
                 //System.out.println("get a cock!");
                 kicker.cock();
-            }
+            }*/
 
-            if (oi.getAcquirerForward()) {
-                //System.out.println("acquirer forward!");
-                roller.start();
-            } else if (oi.getAcquirerReverse()) {
-                //System.out.println("acquirer in reverse!");
-                roller.startReverse();
-            } else if (shootStick.getRawButton(3)) {
+            if (lstick.getRawButton(3)) {
                 //System.out.println("jstk aquire fwd");
                 roller.start();
             } else {

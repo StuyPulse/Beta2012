@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 package edu.stuy;
 
-import com.sun.squawk.platform.posix.natives.Time;
 import edu.wpi.first.wpilibj.AnalogModule;
 import edu.wpi.first.wpilibj.Dashboard;
 import edu.wpi.first.wpilibj.DigitalModule;
@@ -104,7 +103,7 @@ public class DonTrackerDashboard {
             }
             lowDashData.finalizeCluster();
 
-            lowDashData.addByte(Solenoid.getAll());
+            //lowDashData.addByte(Solenoid.getAll());
             lowDashData.addBoolean(!donnie.kicker.getCockStatus());
             lowDashData.addBoolean(donnie.dt.getGear());
         }
