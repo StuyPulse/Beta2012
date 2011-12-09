@@ -19,21 +19,14 @@ import edu.wpi.first.wpilibj.*;
  * directory.
  */
 public class RobotTemplate extends SimpleRobot {
-      Joystick lstick;
-    Joystick rstick;
-    Joystick shootStick;
-    Joystick gamepad;
+ 
     Gyro george;
 
 
     Victor acquirer;
    
     public RobotTemplate() {
-        lstick = new Joystick(1); //usb port
-        rstick = new Joystick(2); //usb port
-        shootStick = new Joystick(3); //usb portRIVE_3_CHANNEL, DRIVE_4_CHANNEL); //digital channelss
         george = new Gyro(1,1);
-        gamepad = new Joystick(4);
         acquirer = new Victor(2,9);
         System.out.println("contsructed Donovan");
     }
@@ -60,9 +53,4 @@ public class RobotTemplate extends SimpleRobot {
             System.out.println(george.getAngle());
         }
     }
-
-    public void doNoHarm() {
-    }
-
-    public void obeyOrders() {
-    }}
+}
