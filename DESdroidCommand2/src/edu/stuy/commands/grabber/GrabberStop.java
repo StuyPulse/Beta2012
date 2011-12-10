@@ -2,24 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.stuy.commands;
+package edu.stuy.commands.grabber;
 
-import edu.stuy.OI;
-import edu.stuy.subsystems.Chassis;
+import edu.stuy.subsystems.Grabber;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author bradmiller
  */
-public class DriveWithGamepad extends Command {
-    Chassis chassis;
+public class GrabberStop extends Command {
+    Grabber grabber;
 
-    public DriveWithGamepad() {
+    public GrabberStop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        chassis = Chassis.getInstance();
-        requires(chassis);
+        grabber = Grabber.getInstance();
+        requires(grabber);
     }
 
     // Called just before this Command runs the first time
@@ -28,9 +27,7 @@ public class DriveWithGamepad extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        chassis.mecanumDrive_Cartesian(OI.getInstance().getLeftX(),
-                -OI.getInstance().getLeftY(),
-                OI.getInstance().getRightX());
+        grabber.setMotors(0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

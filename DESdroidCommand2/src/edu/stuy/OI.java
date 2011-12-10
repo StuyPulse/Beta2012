@@ -5,7 +5,9 @@
 
 package edu.stuy;
 
+import edu.stuy.commands.grabber.*;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
     
@@ -13,8 +15,23 @@ public class OI {
     
     private Joystick gamepad;
     
+    private JoystickButton GAMEPAD_BUTTON_1;
+    private JoystickButton GAMEPAD_BUTTON_2;
+    private JoystickButton GAMEPAD_BUTTON_3;
+    private JoystickButton GAMEPAD_BUTTON_4;
+    
     private OI() {
         gamepad = new Joystick(1);
+
+	GAMEPAD_BUTTON_1 = new JoystickButton(gamepad, 1);
+	GAMEPAD_BUTTON_2 = new JoystickButton(gamepad, 2);
+	GAMEPAD_BUTTON_3 = new JoystickButton(gamepad, 3);
+	GAMEPAD_BUTTON_4 = new JoystickButton(gamepad, 4);
+
+	GAMEPAD_BUTTON_1.whileHeld(new GrabberIn());
+	GAMEPAD_BUTTON_2.whileHeld(new GrabberOut());
+	GAMEPAD_BUTTON_3.whileHeld(new GrabberUp());
+	GAMEPAD_BUTTON_4.whileHeld(new GrabberDown());
     }
     
     public static OI getInstance() {

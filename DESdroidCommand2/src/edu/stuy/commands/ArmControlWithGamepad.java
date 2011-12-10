@@ -5,21 +5,21 @@
 package edu.stuy.commands;
 
 import edu.stuy.OI;
-import edu.stuy.subsystems.Chassis;
+import edu.stuy.subsystems.Arm;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author bradmiller
  */
-public class DriveWithGamepad extends Command {
-    Chassis chassis;
+public class ArmControlWithGamepad extends Command {
+    Arm arm;
 
-    public DriveWithGamepad() {
+    public ArmControlWithGamepad() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        chassis = Chassis.getInstance();
-        requires(chassis);
+        arm = Arm.getInstance();
+        requires(arm);
     }
 
     // Called just before this Command runs the first time
@@ -28,9 +28,7 @@ public class DriveWithGamepad extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        chassis.mecanumDrive_Cartesian(OI.getInstance().getLeftX(),
-                -OI.getInstance().getLeftY(),
-                OI.getInstance().getRightX());
+        arm.set(OI.getInstance().getRightY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

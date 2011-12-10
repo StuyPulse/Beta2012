@@ -36,6 +36,10 @@ public class Chassis extends Subsystem {
         drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
     }
     
+    public void mecanumDrive_Cartesian(double x, double y, double rotation) {
+        drive.mecanumDrive_Cartesian(x, y, rotation, 0);
+    }
+    
     public void driveWithGamepad() {
         drive.mecanumDrive_Cartesian(OI.getInstance().getLeftX(), -OI.getInstance().getLeftY(), OI.getInstance().getRightX(), 0);
     }

@@ -4,22 +4,24 @@
  */
 package edu.stuy.commands;
 
-import edu.stuy.OI;
-import edu.stuy.subsystems.Grabber;
+import edu.stuy.subsystems.TubeAcquiredLight;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author bradmiller
  */
-public class ControlGrabber extends Command {
-    Grabber grabber;
+public class SetTubeAcquiredLight extends Command {
+    TubeAcquiredLight light;
+    boolean on;
 
-    public ControlGrabber() {
+    public SetTubeAcquiredLight(boolean on) {
+        this.on = on;
+        
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        grabber = Grabber.getInstance();
-        requires(grabber);
+        light = TubeAcquiredLight.getInstance();
+        requires(light);
     }
 
     // Called just before this Command runs the first time
@@ -28,8 +30,7 @@ public class ControlGrabber extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.getInstance().getGamepad().getRawButton(1))
-            grabber.grabberIn();
+        light.set(on);
     }
 
     // Make this return true when this Command no longer needs to run execute()

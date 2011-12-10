@@ -2,23 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.stuy.commands;
+package edu.stuy.commands.grabber;
 
-import edu.stuy.subsystems.Arm;
+import edu.stuy.subsystems.Grabber;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author bradmiller
  */
-public class ControlArm extends Command {
-    Arm arm;
+public class GrabberOut extends Command {
+    Grabber grabber;
 
-    public ControlArm() {
+    public GrabberOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        arm = Arm.getInstance();
-        requires(arm);
+        grabber = Grabber.getInstance();
+        requires(grabber);
     }
 
     // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class ControlArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        arm.controlArm();
+        grabber.setMotors(1, -1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
