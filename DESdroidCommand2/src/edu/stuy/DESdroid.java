@@ -19,6 +19,8 @@ import edu.stuy.subsystems.ExampleSubsystem;
 import edu.stuy.subsystems.Grabber;
 import edu.stuy.subsystems.TubeAcquiredLight;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,8 +45,10 @@ public class DESdroid extends IterativeRobot {
         // this will associate all the buttons with the appropriate commands
         OI.getInstance();
 
-        // TODO: Play with Preferences and SmartDashboard
-//        Preferences.getInstance();
+        // TODO: Figure out how Preferences work
+        
+        // TODO: Play with SmartDashboard
+        SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
 
         // initialize all subsystems here. The result of getInstance() is
         // intentionally ignored.
