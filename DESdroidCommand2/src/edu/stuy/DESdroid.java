@@ -45,6 +45,9 @@ public class DESdroid extends IterativeRobot {
         // this will associate all the buttons with the appropriate commands
         OI.getInstance();
 
+        // TODO: Check if things that use NetworkTables break if this isn't called
+        NetworkTable.initialize();
+
         // TODO: Figure out how Preferences work
         
         // TODO: Play with SmartDashboard
