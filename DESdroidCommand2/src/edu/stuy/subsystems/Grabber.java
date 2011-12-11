@@ -40,7 +40,7 @@ public class Grabber extends Subsystem {
     
     public void setMotors(double upperSpeed, double lowerSpeed) {
         upperMotor.set(upperSpeed);
-        upperMotor.set(lowerSpeed);
+        lowerMotor.set(lowerSpeed);
     }
     
     public boolean isTubeAcquired() {
