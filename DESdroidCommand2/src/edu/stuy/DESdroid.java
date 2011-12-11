@@ -18,6 +18,7 @@ import edu.stuy.subsystems.Chassis;
 import edu.stuy.subsystems.ExampleSubsystem;
 import edu.stuy.subsystems.Grabber;
 import edu.stuy.subsystems.TubeAcquiredLight;
+import edu.wpi.first.wpilibj.Preferences;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,6 +42,9 @@ public class DESdroid extends IterativeRobot {
         // create the instance of the operator interface class
         // this will associate all the buttons with the appropriate commands
         OI.getInstance();
+
+        // TODO: Play with Preferences and SmartDashboard
+//        Preferences.getInstance();
 
         // initialize all subsystems here. The result of getInstance() is
         // intentionally ignored.
