@@ -26,8 +26,8 @@ public class RobotTemplate extends SimpleRobot {
     Victor acquirer;
    
     public RobotTemplate() {
-        george = new Gyro(1,1);
-        acquirer = new Victor(2,9);
+        george = new Gyro(2,1);
+        acquirer = new Victor(1,9);
         System.out.println("contsructed Donovan");
     }
     public void operatorControl() {
