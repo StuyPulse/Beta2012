@@ -4,6 +4,7 @@
  */
 package edu.stuy.commands;
 
+import edu.stuy.subsystems.Grabber;
 import edu.stuy.subsystems.TubeAcquiredLight;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,11 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SetTubeAcquiredLight extends Command {
     TubeAcquiredLight light;
-    boolean on;
 
-    public SetTubeAcquiredLight(boolean on) {
-        this.on = on;
-        
+    public SetTubeAcquiredLight() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         light = TubeAcquiredLight.getInstance();
@@ -30,7 +28,7 @@ public class SetTubeAcquiredLight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        light.set(on);
+        light.set(Grabber.getInstance().isTubeAcquired());
     }
 
     // Make this return true when this Command no longer needs to run execute()

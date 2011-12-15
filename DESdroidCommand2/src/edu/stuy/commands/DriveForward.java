@@ -4,7 +4,6 @@
  */
 package edu.stuy.commands;
 
-import edu.stuy.OI;
 import edu.stuy.subsystems.Chassis;
 import edu.wpi.first.wpilibj.command.Command;
 

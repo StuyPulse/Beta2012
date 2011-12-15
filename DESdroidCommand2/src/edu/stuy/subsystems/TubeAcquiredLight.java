@@ -23,7 +23,7 @@ public class TubeAcquiredLight extends Subsystem {
 
             // Set default command here, like this:
             // instance.setDefaultCommand(new CommandIWantToRun());
-            instance.setDefaultCommand(new SetTubeAcquiredLight(false));
+            instance.setDefaultCommand(new SetTubeAcquiredLight());
         }
         return instance;
     }

@@ -7,7 +7,7 @@ package edu.stuy.subsystems;
 
 import edu.stuy.OI;
 import edu.stuy.commands.ArmControlWithGamepad;
-import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,7 +18,7 @@ public class Arm extends Subsystem {
     private static Arm instance = null;
     
     private Victor armMotor;
-    private Servo wrist;
+    private AnalogChannel pot;
 
     public static Arm getInstance() {
         if(instance == null) {
@@ -34,7 +34,7 @@ public class Arm extends Subsystem {
     // Initialize your subsystem here
     private Arm() {
         armMotor = new Victor(3);
-        wrist = new Servo(5);
+        pot = new AnalogChannel(1);
     }
     
     public void set(double speed) {
@@ -45,8 +45,8 @@ public class Arm extends Subsystem {
         armMotor.set(OI.getInstance().getRightY());
     }
     
-    public void setWristServo(double value) {
-        wrist.set(value);
+    public double getPosition() {
+        return pot.getVoltage();
     }
 }
 

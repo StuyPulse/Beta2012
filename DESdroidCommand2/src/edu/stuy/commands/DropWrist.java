@@ -4,7 +4,7 @@
  */
 package edu.stuy.commands;
 
-import edu.stuy.subsystems.Arm;
+import edu.stuy.subsystems.Wrist;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,13 +12,14 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author bradmiller
  */
 public class DropWrist extends Command {
-    Arm arm;
+    Wrist wrist;
+    boolean done = false;
 
     public DropWrist() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        arm = Arm.getInstance();
-        requires(arm);
+        wrist = Wrist.getInstance();
+        requires(wrist);
     }
 
     // Called just before this Command runs the first time
@@ -27,12 +28,13 @@ public class DropWrist extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        arm.setWristServo(1);
+        wrist.set(1);
+        done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return done;
     }
 
     // Called once after isFinished returns true

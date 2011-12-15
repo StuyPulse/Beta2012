@@ -13,13 +13,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.stuy.commands.ExampleCommand;
-import edu.stuy.subsystems.Arm;
-import edu.stuy.subsystems.Chassis;
-import edu.stuy.subsystems.ExampleSubsystem;
-import edu.stuy.subsystems.Grabber;
-import edu.stuy.subsystems.TubeAcquiredLight;
+import edu.stuy.subsystems.*;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -45,12 +40,9 @@ public class DESdroid extends IterativeRobot {
         // this will associate all the buttons with the appropriate commands
         OI.getInstance();
 
-        // TODO: Check if things that use NetworkTables break if this isn't called
-        NetworkTable.initialize();
-
-        // TODO: Figure out how Preferences work
+        // Saving throws IOException
+        Preferences.getInstance();
         
-        // TODO: Play with SmartDashboard
         SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
 
         // initialize all subsystems here. The result of getInstance() is
@@ -60,6 +52,7 @@ public class DESdroid extends IterativeRobot {
         Arm.getInstance();
         Grabber.getInstance();
         TubeAcquiredLight.getInstance();
+        Wrist.getInstance();
     }
 
     public void autonomousInit() {
@@ -83,5 +76,7 @@ public class DESdroid extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putDouble("Arm Position", Arm.getInstance().getPosition());
+        SmartDashboard.putBoolean("Tube Acquired", Grabber.getInstance().isTubeAcquired());
     }
 }
